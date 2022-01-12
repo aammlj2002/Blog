@@ -1,11 +1,13 @@
 <?php
 
 use App\Models\Blog;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blogs', [
-        "blogs"=>Blog::latest()->filter(request(["search", "category", "username"]))->get()
+        "blogs"=>Blog::latest()->filter(request(["search", "category", "username"]))->get(),
+        "categories"=>Category::all()
     ]);
 });
 
