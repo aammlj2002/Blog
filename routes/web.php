@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('blogs', [
-        "blogs"=>Blog::latest()->filter(request(["search", "category", "username"]))->get(),
+        "blogs"=>Blog::latest()->filter(request(["search", "category", "username"]))->paginate(9),
         "categories"=>Category::all()
     ]);
 });
