@@ -1,10 +1,10 @@
-<div>
-    <h3>Blogs you may like</h3>
+<div class="col-lg-8">
     <div class="row">
-        @foreach ($randomBlogs as $blog)
-        <div class="col-md-12">
+        @foreach ($blogs as $blog)
+        <div class="col-lg-6">
             <x-blog-card :blog="$blog" />
         </div>
         @endforeach
     </div>
+    {{$blogs->links()}}
 </div>

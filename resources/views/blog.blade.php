@@ -1,5 +1,7 @@
 <x-layout>
-    <div class="col-lg-8">
+    <!--not show hero section in Single Blog view -->
+    <x-slot name="hero"></x-slot>
+    <div class="col-lg-8 mt-5">
         <!-- Post content-->
         <article>
             <header class="mb-4">
@@ -8,8 +10,8 @@
                 <a class="badge bg-primary text-decoration-none link-light"
                     href="/?category={{$blog->category->slug}}">{{$blog->category->name}}</a>
             </header>
-            <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg"
-                    alt="..." /></figure>
+            <figure class="mb-4"><img class="img-fluid rounded" src="{{asset('/images/marco.jpg')}}" alt="..." />
+            </figure>
             <section class="mb-5">
                 {{$blog->body}}
             </section>
