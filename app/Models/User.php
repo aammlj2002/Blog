@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        "username",
         'password',
     ];
 
@@ -45,5 +46,9 @@ class User extends Authenticatable
     public function blogs()
     {
         return $this->hasMany(Blog::class);
+    }
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes["password"] = bcrypt($value);
     }
 }

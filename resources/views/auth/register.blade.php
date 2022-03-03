@@ -23,40 +23,49 @@
                     </span>
                 </div>
             </div>
-            <div class="mt-6">
+            <form method="POST" class="mt-6">
+                @csrf
                 <div class="w-full space-y-6">
                     <div class="w-full">
                         <div class=" relative ">
-                            <input type="text"
-                                name="name"
+                            <input type="text" name="name"
                                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="Name" />
+                                placeholder="Name" value="{{old('name')}}" />
                         </div>
                     </div>
+                    @error("name")
+                    <div class="text-red-600">{{$message}}</div>
+                    @enderror
                     <div class="w-full">
                         <div class=" relative ">
-                            <input type="text"
-                                name="username"
+                            <input type="text" name="username"
                                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="Username" />
+                                placeholder="Username" value="{{old('username')}}" />
                         </div>
                     </div>
+                    @error("username")
+                    <div class="text-red-600">{{$message}}</div>
+                    @enderror
                     <div class="w-full">
                         <div class=" relative ">
-                            <input type="email"
-                                name="email"
+                            <input type="email" name="email"
                                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
-                                placeholder="Email" />
+                                placeholder="Email" value="{{old('email')}}" />
                         </div>
                     </div>
+                    @error("email")
+                    <div class="text-red-600">{{$message}}</div>
+                    @enderror
                     <div class="w-full">
                         <div class=" relative ">
-                            <input type="password"
-                                name="password"
+                            <input type="password" name="password"
                                 class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
                                 placeholder="Password" />
                         </div>
                     </div>
+                    @error("password")
+                    <div class="text-red-600">{{$message}}</div>
+                    @enderror
                     <div>
                         <span class="block w-full rounded-md shadow-sm">
                             <button type="submit"
@@ -66,7 +75,7 @@
                         </span>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </body>
