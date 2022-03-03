@@ -11,6 +11,12 @@
                 <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#">{{auth()->user()->name}}</a></li>
+                <li class="nav-item">
+                    <form method="POST" action="/logout">
+                        @csrf
+                        <button type="submit" class="nav-link btn btn-link">logout</button>
+                    </form>
+                </li>
             </ul>
         </div>
     </div>

@@ -28,3 +28,7 @@ Route::post("/register", function () {
     auth()->login($user);
     return redirect("/");
 });
+Route::post("/logout", function () {
+    auth()->logout();
+    return redirect("/login");
+});
