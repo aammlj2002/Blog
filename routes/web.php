@@ -4,6 +4,22 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
+use MailchimpMarketing\ApiClient;
+
+Route::get("/ping", function () {
+    $mailchimp = new ApiClient();
+
+    $mailchimp->setConfig([
+        'apiKey' => config("services.mailchimp.key"),
+        'server' => config("services.mailchimp.server_prefix")
+    ]);
+
+    $response = $mailchimp->lists->addListMember("5fe879bd3d", [
+        "email_address"=>'kyawlinnaingwin8@gmail.com',
+        "status"=>"subscribed",
+    ]);
+    dd($response);
+});
 
 Route::middleware("auth")->group(function () {
     Route::post("/logout", [AuthController::class, "logout"]);
