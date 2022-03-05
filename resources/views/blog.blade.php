@@ -17,19 +17,24 @@
             </section>
         </article>
         <!-- Comments section-->
+        @guest
+        <p>Please <a href="{{route('login')}}">login</a> to participate in this discussion</p>
+        @endguest
         <section class="mb-5">
             <p>Comment({{$blog->comments()->count()}})</p>
             <div class="card bg-light">
                 <div class="card-body">
                     <!-- Comment form-->
-                    <form class="mb-4">
-                        <textarea class="form-control" rows="3"
+                    @auth
+                    <form method="POST" class="mb-4" action="/blogs/{{$blog->slug}}/comment">
+                        @csrf
+                        <textarea class="form-control" rows="3" name="body"
                             placeholder="Join the discussion and leave a comment!"></textarea>
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn btn-primary mt-3">Post</button>
                         </div>
-
                     </form>
+                    @endauth
                     <!-- Single comment-->
                     @foreach ($blog->comments as $comment)
 
