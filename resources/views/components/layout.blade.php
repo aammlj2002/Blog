@@ -16,7 +16,7 @@
     {{$hero}}
 
     <!-- Page content-->
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             {{$slot}}
             <x-right-side-widgets />
