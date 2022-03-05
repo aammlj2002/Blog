@@ -13,6 +13,9 @@
 
 <body>
     <x-nav />
+    @if (Session("success"))
+    <div class="alert alert-success">{{Session("success")}}</div>
+    @endif
     {{$hero}}
 
     <!-- Page content-->
