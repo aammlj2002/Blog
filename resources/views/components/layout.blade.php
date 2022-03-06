@@ -16,7 +16,7 @@
     @if (Session("success"))
     <div class="alert alert-success">{{Session("success")}}</div>
     @endif
-    {{$hero}}
+    {{-- {{$hero}} --}}
 
     <!-- Page content-->
     <div class="container mt-4">

@@ -17,4 +17,8 @@ class BlogController extends Controller
             "blog"=>$blog,
         ]);
     }
+    public function create()
+    {
+        return view("blog.create");
+    }
 }
