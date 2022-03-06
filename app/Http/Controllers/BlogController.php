@@ -9,11 +9,11 @@ class BlogController extends Controller
 {
     public function index()
     {
-        return view('blogs');
+        return view('blog.index');
     }
     public function show(Blog $blog)
     {
-        return view("blog", [
+        return view("blog.show", [
             "blog"=>$blog,
         ]);
     }

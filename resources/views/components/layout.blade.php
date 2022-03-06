@@ -16,13 +16,11 @@
     @if (Session("success"))
     <div class="alert alert-success">{{Session("success")}}</div>
     @endif
-    {{-- {{$hero}} --}}
 
     <!-- Page content-->
     <div class="container mt-4">
         <div class="row">
             {{$slot}}
-            <x-right-side-widgets />
         </div>
     </div>
     <!-- Footer-->

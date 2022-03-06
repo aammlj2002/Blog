@@ -20,4 +20,5 @@
         <x-comment-section :comments="$blog->comments" :blog="$blog->slug" />
         </section>
     </div>
+    <x-right-side-widgets />
 </x-layout>

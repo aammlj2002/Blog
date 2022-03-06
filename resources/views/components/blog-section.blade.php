@@ -1,4 +1,5 @@
-<div class="col-lg-8">
+<div class="col-lg-8" id="blog">
+    <h3>Blogs</h3>
     <div class="row">
         @foreach ($blogs as $blog)
         <div class="col-lg-6">
