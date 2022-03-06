@@ -3,23 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
-use App\Services\Newsletter;
+use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Validation\ValidationException;
-
-Route::post("/subscribe", function (Newsletter $newsletter) {
-    request()->validate([
-        "email"=>"required | email",
-    ]);
-    try {
-        $newsletter->subscribe(request()->email);
-    } catch (Exception $e) {
-        throw ValidationException::withMessages([
-            "email"=>"this email could not be added to our newsletter list"
-        ]);
-    }
-    return redirect("/")->with("success", "You are now signed up for our newsletters");
-});
 
 Route::middleware("auth")->group(function () {
     Route::post("/logout", [AuthController::class, "logout"]);
@@ -28,6 +13,7 @@ Route::middleware("auth")->group(function () {
 
 Route::get('/blogs/{blog:slug}', [BlogController::class, "show"]);
 Route::get('/', [BlogController::class, "index"]);
+Route::post("/subscribe", NewsletterController::class);
 
 Route::middleware("guest")->group(function () {
     Route::get("/register", [AuthController::class, "register"]);
