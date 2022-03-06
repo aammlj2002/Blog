@@ -25,6 +25,7 @@ class BlogController extends Controller
     {
         $formData = request()->validate([
             "title"=>"required",
+            "thumbnail"=>"required|image",
             "slug"=>["required", Rule::unique("blogs", "slug")],
             "intro"=>"required",
             "body"=>"required",
@@ -32,7 +33,8 @@ class BlogController extends Controller
         ]);
         Blog::create([
             ...$formData,
-            "user_id"=>auth()->user()->id
+            "user_id"=>auth()->user()->id,
+            "thumbnail"=>request()->file("thumbnail")->store("thumbnails")
         ]);
         return back()->with("success", "uploaded post successfully");
     }

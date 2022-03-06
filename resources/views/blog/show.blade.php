@@ -10,7 +10,7 @@
                 <a class="badge bg-primary text-decoration-none link-light"
                     href="/?category={{$blog->category->slug}}">{{$blog->category->name}}</a>
             </header>
-            <figure class="mb-4"><img class="img-fluid rounded" src="{{asset('/images/marco.jpg')}}" alt="..." />
+            <figure class="mb-4"><img class="img-fluid rounded" src="{{$blog->thumbnail}}" alt="..." />
             </figure>
             <section class="mb-5">
                 {{$blog->body}}

@@ -1,6 +1,6 @@
 @props(['blog'])
 <div class="card mb-4">
-    <a href="#!"><img class="card-img-top" src="{{asset('images/marco.jpg')}}" alt="..." /></a>
+    <a href="#!"><img class="card-img-top" src="{{$blog->thumbnail}}" alt="..." /></a>
     <div class="card-body">
         <h2 class="card-title h4">{{$blog->title}}</h2>
         <div>

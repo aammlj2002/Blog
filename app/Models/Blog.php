@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
-    protected $fillable=["title", "body", "slug", "intro", "category_id", "user_id"];
+    protected $fillable=["title", "body", "slug", "intro", "category_id", "user_id",'thumbnail'];
     protected $with=["category", "author"];
     public function category()
     {
@@ -34,6 +34,10 @@ class Blog extends Model
                 $query->where("username", $username);
             });
         });
+    }
+    public function getThumbnailAttribute($value)
+    {
+        return $value ? asset("/storage/$value") : asset("/images/placeholder.png");
     }
     public function comments()
     {

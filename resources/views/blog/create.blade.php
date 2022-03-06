@@ -2,13 +2,20 @@
     <div class="row">
         <div class="col-6">
             <h3>Create Blog</h3>
-            <form class="mb-4" method="POST">
+            <form class="mb-4" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Title</label>
                     <input name="title" type="text" class="form-control" value="{{old('title')}}">
                 </div>
                 @error("title")
+                <p class="text-danger">{{$message}}</p>
+                @enderror
+                <div class="mb-3">
+                    <label class="form-label">Thumbnail</label>
+                    <input name="thumbnail" type="file" class="form-control" value="{{old('thumbnail')}}">
+                </div>
+                @error("thumbnail")
                 <p class="text-danger">{{$message}}</p>
                 @enderror
                 <div class="mb-3">
