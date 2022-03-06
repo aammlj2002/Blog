@@ -1,7 +1,7 @@
 <x-layout>
     <!--not show hero section in Single Blog view -->
     <x-slot name="hero"></x-slot>
-    <div class="col-lg-8 mt-5">
+    <div class="col-lg-8">
         <!-- Post content-->
         <article>
             <header class="mb-4">
