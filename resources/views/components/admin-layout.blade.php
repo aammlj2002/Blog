@@ -3,7 +3,7 @@
         <div class="col-4">
             <x-admin-dashboard-sidebar />
         </div>
-        <div class="col-6 mt-2">
+        <div class="col-8 mt-2">
             {{$slot}}
         </div>
     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CommentController;
@@ -10,11 +11,9 @@ Route::middleware("auth")->group(function () {
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::post("/blogs/{blog:slug}/comment", [CommentController::class, "store"]);
     Route::middleware("admin")->group(function () {
-        Route::get("/admin/blogs/create", [BlogController::class, "create"]);
-        Route::post("/admin/blogs/create", [BlogController::class, "store"]);
-        Route::get("/admin", function () {
-            return view("admin.index");
-        });
+        Route::get("/admin/blogs/create", [AdminBlogController::class, "create"]);
+        Route::post("/admin/blogs/create", [AdminBlogController::class, "store"]);
+        Route::get("/admin", [AdminBlogController::class, "index"]);
     });
 });
 
