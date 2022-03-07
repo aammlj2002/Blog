@@ -15,7 +15,12 @@
                 <th scope="row">1</th>
                 <td>{{$blog->title}}</td>
                 <td><a href="/admin/blogs/{{$blog->slug}}/edit" class="btn btn-warning btn-sm">Edit</a></td>
-                <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
+                <td>
+                    <form action="/admin/blogs/{{$blog->slug}}/delete" method="POST">
+                        @csrf
+                        <button class="btn btn-danger btn-sm">Delete</button>
+                    </form>
+                </td>
             </tr>
             @endforeach
         </tbody>

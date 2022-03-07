@@ -16,6 +16,7 @@ Route::middleware("auth")->group(function () {
         Route::post("/admin/blogs/create", [AdminBlogController::class, "store"]);
         Route::get("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "edit"]);
         Route::post("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "update"]);
+        Route::post("/admin/blogs/{blog:slug}/delete", [AdminBlogController::class, "destroy"]);
     });
 });
 

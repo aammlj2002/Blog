@@ -57,4 +57,9 @@ class AdminBlogController extends Controller
         ]);
         return redirect("/")->with("success", "updated blog successfully");
     }
+    public function destroy(Blog $blog)
+    {
+        $blog->delete();
+        return redirect("/admin");
+    }
 }
