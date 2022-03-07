@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminBlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\NewsletterController;
 use Illuminate\Support\Facades\Route;
@@ -17,6 +18,7 @@ Route::middleware("auth")->group(function () {
         Route::get("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "edit"]);
         Route::post("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "update"]);
         Route::post("/admin/blogs/{blog:slug}/delete", [AdminBlogController::class, "destroy"]);
+        Route::get("/admin/categories", [CategoryController::class, "index"]);
     });
 });
 

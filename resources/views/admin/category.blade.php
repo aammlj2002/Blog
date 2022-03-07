@@ -10,13 +10,13 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($blogs as $blog)
+            @foreach ($categories as $category)
             <tr>
                 <th scope="row">{{$loop->index+1}}</th>
-                <td>{{$blog->title}}</td>
-                <td><a href="/admin/blogs/{{$blog->slug}}/edit" class="btn btn-warning btn-sm">Edit</a></td>
+                <td>{{$category->name}}</td>
+                <td><a href="/admin/categories/{{$category->slug}}/edit" class="btn btn-warning btn-sm">Edit</a></td>
                 <td>
-                    <form action="/admin/blogs/{{$blog->slug}}/delete" method="POST">
+                    <form action="/admin/categories/{{$category->slug}}/delete" method="POST">
                         @csrf
                         <button class="btn btn-danger btn-sm">Delete</button>
                     </form>
@@ -25,5 +25,5 @@
             @endforeach
         </tbody>
     </table>
-    {{$blogs->links()}}
+    {{$categories->links()}}
 </x-admin-layout>
