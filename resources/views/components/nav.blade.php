@@ -9,7 +9,9 @@
                 <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                 <li class="nav-item"><a class="nav-link active" aria-current="page" href="#blog">Blog</a></li>
                 <li class="nav-item"><a class="nav-link" href="#subscribe">Subscribe</a></li>
+                @can('admin')
                 <li class="nav-item"><a class="nav-link" href="/admin">Admin Panel</a></li>
+                @endcan
                 @guest
                 <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
                 <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
