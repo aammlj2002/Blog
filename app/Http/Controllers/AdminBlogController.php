@@ -20,18 +20,10 @@ class AdminBlogController extends Controller
     }
     public function store()
     {
-        $formData = request()->validate([
-            "title"=>"required",
-            "thumbnail"=>"required|image",
-            "slug"=>["required", Rule::unique("blogs", "slug")],
-            "intro"=>"required",
-            "body"=>"required",
-            "category_id"=>["required", Rule::exists("categories", "id")],
-        ]);
         Blog::create([
-            ...$formData,
-            "user_id"=>auth()->user()->id,
-            "thumbnail"=>request()->file("thumbnail")->store("thumbnails")
+            ...$this->validateBlog(), // validate form
+            "user_id"=>auth()->user()->id, // get author
+            "thumbnail"=>request()->file("thumbnail")->store("thumbnails") // store thumbnail in sotrage and path to db
         ]);
         return back()->with("success", "uploaded post successfully");
     }
@@ -43,23 +35,28 @@ class AdminBlogController extends Controller
     }
     public function update(Blog $blog)
     {
-        $formData = request()->validate([
-            "title"=>"required",
-            "thumbnail"=>"required|image",
-            "slug"=>["required", Rule::unique("blogs", "slug")->ignore($blog->id)],
-            "intro"=>"required",
-            "body"=>"required",
-            "category_id"=>["required", Rule::exists("categories", "id")],
-        ]);
-        $blog->update([
-            ...$formData,
-            "thumbnail"=>request()->file("thumbnail")->store("thumbnails")
-        ]);
+        $formData = $this->validateBlog($blog); // validate form
+        if ($formData['thumbnail'] ?? false) {
+            $formData["thumbnail"]=request()->file("thumbnail")->store("thumbnails");
+        }
+        $blog->update($formData);
         return redirect("/")->with("success", "updated blog successfully");
     }
     public function destroy(Blog $blog)
     {
         $blog->delete();
         return redirect("/admin");
+    }
+    protected function validateBlog(?Blog $blog = null)
+    {
+        $blog ??= new Blog();
+        return request()->validate([
+            "title"=>"required",
+            "thumbnail"=>$blog->exists ? "image" : "required|image", // image is optional in update blog
+            "slug"=>["required", Rule::unique("blogs", "slug")->ignore($blog)],
+            "intro"=>"required",
+            "body"=>"required",
+            "category_id"=>["required", Rule::exists("categories", "id")],
+        ]);
     }
 }
