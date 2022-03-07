@@ -19,6 +19,7 @@ Route::middleware("auth")->group(function () {
         Route::post("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "update"]);
         Route::post("/admin/blogs/{blog:slug}/delete", [AdminBlogController::class, "destroy"]);
         Route::get("/admin/categories", [CategoryController::class, "index"]);
+        Route::post("/admin/categories/create", [CategoryController::class, "store"]);
     });
 });
 

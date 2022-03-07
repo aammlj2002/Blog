@@ -1,5 +1,16 @@
 <x-admin-layout>
-    <p class="fs-4 pl-4">Admin dashbord</p>
+    <p class="fs-4">Add category</p>
+    <form class="mb-4" method="POST" action="/admin/categories/create">
+        @csrf
+        <div class="input-group mb-3">
+            <input name="name" type="text" class="form-control" placeholder="category name ...">
+            <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+        @error("name")
+        <p class="text-danger">{{$message}}</p>
+        @enderror
+    </form>
+    <h2 class="fs-4">Categories</h2>
     <table class="table table-striped">
         <thead>
             <tr>
