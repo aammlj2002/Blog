@@ -10,13 +10,13 @@ class AdminBlogController extends Controller
 {
     public function index()
     {
-        return view("admin.post.index", [
+        return view("admin.blog.index", [
             "blogs"=>Blog::latest()->paginate(15)
         ]);
     }
     public function create()
     {
-        return view("blog.create");
+        return view("admin.blog.create");
     }
     public function store()
     {
@@ -34,5 +34,11 @@ class AdminBlogController extends Controller
             "thumbnail"=>request()->file("thumbnail")->store("thumbnails")
         ]);
         return back()->with("success", "uploaded post successfully");
+    }
+    public function edit(Blog $blog)
+    {
+        return view("admin.blog.edit", [
+            "blog"=>$blog
+        ]);
     }
 }

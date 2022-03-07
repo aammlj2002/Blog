@@ -11,9 +11,11 @@ Route::middleware("auth")->group(function () {
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::post("/blogs/{blog:slug}/comment", [CommentController::class, "store"]);
     Route::middleware("admin")->group(function () {
+        Route::get("/admin", [AdminBlogController::class, "index"]);
         Route::get("/admin/blogs/create", [AdminBlogController::class, "create"]);
         Route::post("/admin/blogs/create", [AdminBlogController::class, "store"]);
-        Route::get("/admin", [AdminBlogController::class, "index"]);
+        Route::get("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "edit"]);
+        Route::post("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "update"]);
     });
 });
 
