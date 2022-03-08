@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Category;
 use Illuminate\support\Str;
 
@@ -27,5 +28,10 @@ class CategoryController extends Controller
 
         //redirect
         return back()->with("success", "added new category");
+    }
+    public function destroy(Category $category)
+    {
+        $category->delete();
+        return back()->with("success", "delete category");
     }
 }

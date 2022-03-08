@@ -18,8 +18,10 @@ Route::middleware("auth")->group(function () {
         Route::get("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "edit"]);
         Route::post("/admin/blogs/{blog:slug}/edit", [AdminBlogController::class, "update"]);
         Route::post("/admin/blogs/{blog:slug}/delete", [AdminBlogController::class, "destroy"]);
+
         Route::get("/admin/categories", [CategoryController::class, "index"]);
         Route::post("/admin/categories/create", [CategoryController::class, "store"]);
+        Route::post("/admin/categories/{category:slug}/delete", [CategoryController::class, "destroy"]);
     });
 });
 

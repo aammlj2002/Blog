@@ -1,4 +1,5 @@
 <x-admin-layout>
+
     <p class="fs-4">Add category</p>
     <form class="mb-4" method="POST" action="/admin/categories/create">
         @csrf
@@ -29,7 +30,7 @@
                 <td>
                     <form action="/admin/categories/{{$category->slug}}/delete" method="POST">
                         @csrf
-                        <button class="btn btn-danger btn-sm">Delete</button>
+                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                     </form>
                 </td>
             </tr>
