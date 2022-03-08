@@ -21,6 +21,8 @@ Route::middleware("auth")->group(function () {
 
         Route::get("/admin/categories", [CategoryController::class, "index"]);
         Route::post("/admin/categories/create", [CategoryController::class, "store"]);
+        Route::get("/admin/categories/{category:slug}/edit", [CategoryController::class, "edit"]);
+        Route::post("/admin/categories/{category:slug}/edit", [CategoryController::class, "update"]);
         Route::post("/admin/categories/{category:slug}/delete", [CategoryController::class, "destroy"]);
     });
 });
