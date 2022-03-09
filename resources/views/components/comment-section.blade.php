@@ -22,7 +22,7 @@
                 </form>
                 @endauth
             </div>
-            <!-- Single comment-->
+            <!-- comment-->
             @foreach ($comments as $comment)
             <div class="d-flex mb-3 ml-3">
                 <div class="flex-shrink-0 m-3"><img class="rounded-circle" src="{{$comment->author->avatar}}"
@@ -47,7 +47,7 @@
             </div>
             {{-- comment reply form --}}
             @auth
-            <form method="POST" class="mb-4 p-3" action="/blogs/{{$blog}}/comment">
+            <form method="POST" class="mb-4 p-3" action="/blogs/{{$blog}}/comment/{{$comment->id}}/reply">
                 @csrf
                 <textarea class="form-control" rows="2" name="body"
                     placeholder="Join the discussion and leave a comment!"></textarea>

@@ -12,6 +12,7 @@ class Comment extends Model
         "body",
         "user_id",
         "blog_id",
+        "parent_id"
     ];
     public function blog()
     {

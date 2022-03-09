@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware("auth")->group(function () {
     Route::post("/logout", [AuthController::class, "logout"]);
     Route::post("/blogs/{blog:slug}/comment", [CommentController::class, "store"]);
+    Route::post("/blogs/{blog:slug}/comment/{comment}/reply", [CommentController::class, "reply"]);
     Route::middleware("can:admin")->group(function () {
         Route::get("/admin", [AdminBlogController::class, "index"]);
         Route::get("/admin/blogs/create", [AdminBlogController::class, "create"]);
