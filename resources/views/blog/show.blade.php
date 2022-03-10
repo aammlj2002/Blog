@@ -19,6 +19,7 @@
             </section>
         </article>
         <!-- Comments section-->
+
         <x-comment-section :comments="$blog->comments" :blog="$blog->slug" />
         </section>
     </div>
